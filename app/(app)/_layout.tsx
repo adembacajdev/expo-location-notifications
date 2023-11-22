@@ -1,10 +1,13 @@
 import { Redirect, Stack } from "expo-router";
+import { Tabs } from "expo-router/tabs";
 
 import { Text } from "react-native";
 import { useAuth } from "../../store/useAuth";
+import { useTheme } from "../../theme/theme";
 
 export default function AppLayout() {
   const { isLoggedIn, isLoading } = useAuth();
+  const { colors } = useTheme();
 
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
@@ -21,9 +24,26 @@ export default function AppLayout() {
 
   // This layout can be deferred because it's not the root layout.
   return (
-    <Stack
+    <Tabs
       screenOptions={{
         headerShown: false,
+        tabBarActiveBackgroundColor: colors.background,
+        tabBarInactiveBackgroundColor: colors.background,
+        tabBarStyle: {
+          backgroundColor: colors.background,
+          borderTopColor: colors.border,
+        },
+        // tabBarLabelStyle: {
+        //   marginTop: 30,
+        //   bottom: 40,
+        // },
+        // // lazy: false,
+        // tabBarStyle: {
+        //   height: hp("15%"),
+        //   bottom: -30,
+        //   position:'absolute',
+        //   // paddingLeft: 100,
+        // },
       }}
     />
   );

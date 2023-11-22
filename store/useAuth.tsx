@@ -11,7 +11,7 @@ interface AuthStore {
 
 export const useAuth = create<AuthStore>()((set, get) => ({
   isLoading: false,
-  isLoggedIn: false,
+  isLoggedIn: true,
   login: () => {
     set({ isLoggedIn: true });
     router.replace("/");

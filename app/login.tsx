@@ -10,7 +10,9 @@ const Container = styled(View)({
 });
 
 export default function SignIn() {
+  /** Hooks */
   const { login } = useAuth();
+
   return (
     <Container>
       <Button title="Login" onPress={login} />
