@@ -1,9 +1,15 @@
 import { Redirect, Stack } from "expo-router";
 import { Tabs } from "expo-router/tabs";
 
-import { Text } from "react-native";
+import { Image, Text } from "react-native";
 import { useAuth } from "../../store/useAuth";
 import { useTheme } from "../../theme/theme";
+import styled from "styled-components/native";
+
+const Img = styled(Image)({
+  width: 20,
+  height: 20,
+});
 
 export default function AppLayout() {
   const { isLoggedIn, isLoading } = useAuth();
@@ -33,18 +39,53 @@ export default function AppLayout() {
           backgroundColor: colors.background,
           borderTopColor: colors.border,
         },
-        // tabBarLabelStyle: {
-        //   marginTop: 30,
-        //   bottom: 40,
-        // },
-        // // lazy: false,
-        // tabBarStyle: {
-        //   height: hp("15%"),
-        //   bottom: -30,
-        //   position:'absolute',
-        //   // paddingLeft: 100,
-        // },
       }}
-    />
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          tabBarLabel: "Home",
+          title: "Home",
+          tabBarActiveTintColor: colors.tabLight,
+          tabBarInactiveTintColor: colors.tabDark,
+          tabBarIcon: ({ focused }) => (
+            <Img
+              source={require("../../assets/icons/home.png")}
+              tintColor={focused ? colors.tabLight : colors.tabDark}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="my-location"
+        options={{
+          tabBarLabel: "My Location",
+          title: "My Location",
+          tabBarActiveTintColor: colors.tabLight,
+          tabBarInactiveTintColor: colors.tabDark,
+          tabBarIcon: ({ focused }) => (
+            <Img
+              source={require("../../assets/icons/pin.png")}
+              tintColor={focused ? colors.tabLight : colors.tabDark}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="preferences"
+        options={{
+          tabBarLabel: "Preferences",
+          title: "Preferences",
+          tabBarActiveTintColor: colors.tabLight,
+          tabBarInactiveTintColor: colors.tabDark,
+          tabBarIcon: ({ focused }) => (
+            <Img
+              source={require("../../assets/icons/setting.png")}
+              tintColor={focused ? colors.tabLight : colors.tabDark}
+            />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

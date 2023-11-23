@@ -1,31 +1,16 @@
-import { Text, View } from "react-native";
-import { Tabs } from "expo-router/tabs";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Text } from "react-native";
 import { router } from "expo-router";
-import styled from "styled-components/native";
 import { useTheme } from "../../theme/theme";
 import { Container } from "../../layouts/Container";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function MyLocation() {
   /** Hooks */
   const { colors } = useTheme();
+  const { top } = useSafeAreaInsets();
 
   return (
-    <Container style={{ backgroundColor: colors.background }}>
-      <Tabs.Screen
-        options={{
-          tabBarLabel: "My Location",
-          tabBarActiveTintColor: colors.tabLight,
-          tabBarInactiveTintColor: colors.tabDark,
-          tabBarIcon: ({ focused }) => (
-            <MaterialIcons
-              name="location-pin"
-              size={25}
-              color={focused ? colors.tabLight : colors.tabDark}
-            />
-          ),
-        }}
-      />
+    <Container style={{ backgroundColor: colors.background, paddingTop: top }}>
       <Text onPress={() => router.push("/preferences")}>
         My Location screen
       </Text>

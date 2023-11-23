@@ -6,5 +6,7 @@ export const Colors = {
     tabDark: "#474E68",
     background: "#0F0F0F",
     border: "#232D3F",
+    lightGrey: "#6B728E",
+    darkGrey: "#404258",
   },
 };

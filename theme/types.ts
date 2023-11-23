@@ -8,5 +8,7 @@ export type Theme = {
     tabDark: string;
     background: string;
     border: string;
+    lightGrey: string;
+    darkGrey: string;
   };
 };
